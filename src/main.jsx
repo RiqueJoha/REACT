@@ -7,10 +7,11 @@ import './index.css'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
    <App
-   nombrePokemon="pikachu"
+   nombrePokemon="ditto"
    /> 
-   
-   <App /> 
-   <App /> 
+   <App 
+    nombrePokemon="pikachu"/> 
+   <App 
+    nombrePokemon="onix"/> 
   </React.StrictMode>,
 )
