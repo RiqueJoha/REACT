@@ -1,38 +1,36 @@
-import{useEffect,useState}from "react";
+
+import { useEffect } from 'react'
 import './App.css'
+import Tarjeta from './componentes/Tarjeta.jsx'
 
-
-const API="https://pokeapi.co/api/v2/pokemon/";
-function App(props) {
-  const [contador,setContador]=useState(0);
-  const [nombre,setNombre]=useState("def nombre")
-  const [imagen,setImagen]=useState("def imagen")
-
+/* const DEF_TARJETA=<Tarjeta
+key={"def key"}
+/> */
+function App() {
+ /* const [nacimientos,setNacimientos]=useState([DEF_TARJETA]) */
   useEffect(()=>{
-    async function fetchApi() {
-      const res= await fetch (API+props.nombrePokemon)
-      let info="def info"
-    
-      if(res.ok){
-        info=await res.json();
-        setNombre(info.name);
-        setImagen(info.sprites.front_default);
-      }
-    }
-    fetchApi()
+    console.log("Effect")
+  
+async function pedirNacimientos(){
+  const res=await fetch ("http://localhost:3000/nacimientos/");
+  let nacimientos="def producto"
+  if(res.ok){
+    nacimientos=await res.json();
+    console.log(nacimientos);
+    /* nacimientos.forEach(nacimiento => {
+      
+    }); */
   }
-  )
+}
+ pedirNacimientos()
+  return()=>{
+    console.log("Limpiando efecto")}
+  },[]);
 
-  function aumentar() {
-    setContador(contador+1);
-  }
+ 
   return (
     <>
-      <h1>Hola</h1>
-      <button onClick={aumentar}>Aumentar</button>
-      <h2>{contador}</h2>
-      <h3>{nombre}</h3>
-      <img src={imagen} alt={imagen} />
+      <Tarjeta></Tarjeta>
     </>
   )
 
